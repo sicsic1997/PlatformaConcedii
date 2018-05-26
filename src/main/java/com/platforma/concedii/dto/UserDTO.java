@@ -7,7 +7,7 @@ public final class UserDTO {
     private String password;
     private String firstName;
     private String lastName;
-    private int idManager;
+    private int managerId;
 
     public int getId() {
         return id;
@@ -49,11 +49,11 @@ public final class UserDTO {
         this.lastName = lastName;
     }
 
-    public int getIdManager() {
-        return idManager;
+    public int getManagerId() {
+        return managerId;
     }
 
-    public void setIdManager(int idManager) {
-        this.idManager = idManager;
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 }
