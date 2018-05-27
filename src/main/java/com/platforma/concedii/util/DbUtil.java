@@ -31,15 +31,7 @@ public class DbUtil {
                     Class.forName(dbDriver).newInstance();
                     dbConnection = DriverManager.getConnection(connectionUrl, userName, password);
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
+            } catch (IOException | IllegalAccessException | InstantiationException | SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
             return dbConnection;

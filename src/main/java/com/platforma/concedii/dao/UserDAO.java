@@ -2,6 +2,7 @@ package com.platforma.concedii.dao;
 
 import com.platforma.concedii.dto.UserDTO;
 import com.platforma.concedii.util.DbUtil;
+import com.platforma.concedii.util.UserRoles;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,7 +48,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
-                userDTO.setUserRole(rs.getString("USER_ROLE"));
+                userDTO.setUserRole(UserRoles.getRoleByString(rs.getString("USER_ROLE")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,7 +84,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
-                userDTO.setUserRole(rs.getString("USER_ROLE"));
+                userDTO.setUserRole(UserRoles.getRoleByString(rs.getString("USER_ROLE")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,7 +104,7 @@ public final class UserDAO {
             ps.setString(3, userDTO.getFirstName());
             ps.setString(4, userDTO.getLastName());
             ps.setInt(5, userDTO.getManagerId());
-            ps.setString(6, userDTO.getUserRole());
+            ps.setString(6, String.valueOf(userDTO.getUserRole()));
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -135,7 +136,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
-                userDTO.setUserRole(rs.getString("USER_ROLE"));
+                userDTO.setUserRole(UserRoles.getRoleByString(rs.getString("USER_ROLE")));
                 userDTOList.add(userDTO);
             }
         } catch (SQLException e) {
@@ -168,7 +169,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
-                userDTO.setUserRole(rs.getString("USER_ROLE"));
+                userDTO.setUserRole(UserRoles.getRoleByString(rs.getString("USER_ROLE")));
                 userDTOList.add(userDTO);
             }
         } catch (SQLException e) {

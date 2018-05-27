@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Molengo', sans-serif;
+}
+
+.login-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-70%);
+}
+
+.login-container > .row {
+    color: #4a4a4a;
+}
+
+.login-container .btn {
+    min-width: 100px;
+    text-transform: uppercase;
+}
+
+.wrong-credentials {
+    justify-content: flex-end;
+}
+
+.wrong-credentials p {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}

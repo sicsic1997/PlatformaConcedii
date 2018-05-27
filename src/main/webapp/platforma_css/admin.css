@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Molengo', sans-serif;
+}
+
+.admin-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-70%);
+}

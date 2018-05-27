@@ -1,5 +1,7 @@
 package com.platforma.concedii.dto;
 
+import com.platforma.concedii.util.UserRoles;
+
 public final class UserDTO {
 
     private int id;
@@ -8,13 +10,13 @@ public final class UserDTO {
     private String firstName;
     private String lastName;
     private int managerId;
-    private String userRole;
+    private UserRoles userRole;
 
-    public String getUserRole() {
+    public UserRoles getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(String userRole) {
+    public void setUserRole(UserRoles userRole) {
         this.userRole = userRole;
     }
 
