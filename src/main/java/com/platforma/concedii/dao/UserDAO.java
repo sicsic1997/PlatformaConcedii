@@ -31,7 +31,8 @@ public final class UserDAO {
                 "   PASSWORD, " +
                 "   FIRST_NAME, " +
                 "   LAST_NAME, " +
-                "   MANAGER_ID " +
+                "   MANAGER_ID, " +
+                "   USER_ROLE " +
                 "FROM USERS " +
                 "WHERE ID = ?";
         try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
@@ -45,6 +46,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
+                userDTO.setUserRole(rs.getString("USER_ROLE"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +67,8 @@ public final class UserDAO {
                 "   PASSWORD, " +
                 "   FIRST_NAME, " +
                 "   LAST_NAME, " +
-                "   MANAGER_ID " +
+                "   MANAGER_ID," +
+                "   USER_ROLE " +
                 "FROM USERS " +
                 "WHERE USER_NAME = ?";
         try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
@@ -79,6 +82,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
+                userDTO.setUserRole(rs.getString("USER_ROLE"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,13 +95,14 @@ public final class UserDAO {
     /**/
     public void addUser(UserDTO userDTO) {
         String sqlInsert = "" +
-                "INSERT INTO USERS (USER_NAME, PASSWORD, FIRST_NAME, LAST_NAME, MANAGER_ID) VALUES (?, ?, ?, ?, ?)";
+                "INSERT INTO USERS (USER_NAME, PASSWORD, FIRST_NAME, LAST_NAME, MANAGER_ID, USER_ROLE) VALUES (?, ?, ?, ?, ?, ?)";
         try(PreparedStatement ps = dbConnection.prepareStatement(sqlInsert)) {
             ps.setString(1, userDTO.getUserName());
             ps.setString(2, userDTO.getPassword());
             ps.setString(3, userDTO.getFirstName());
             ps.setString(4, userDTO.getLastName());
             ps.setInt(5, userDTO.getManagerId());
+            ps.setString(6, userDTO.getUserRole());
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -114,7 +119,8 @@ public final class UserDAO {
                 "   PASSWORD, " +
                 "   FIRST_NAME, " +
                 "   LAST_NAME, " +
-                "   MANAGER_ID " +
+                "   MANAGER_ID, " +
+                "   USER_ROLE  " +
                 "FROM USERS " +
                 "WHERE ID = MANAGER_ID";
         try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
@@ -127,6 +133,7 @@ public final class UserDAO {
                 userDTO.setFirstName(rs.getString("FIRST_NAME"));
                 userDTO.setLastName(rs.getString("LAST_NAME"));
                 userDTO.setManagerId(rs.getInt("MANAGER_ID"));
+                userDTO.setUserRole(rs.getString("USER_ROLE"));
                 userDTOList.add(userDTO);
             }
         } catch (SQLException e) {

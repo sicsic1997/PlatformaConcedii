@@ -8,6 +8,15 @@ public final class UserDTO {
     private String firstName;
     private String lastName;
     private int managerId;
+    private String userRole;
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
 
     public int getId() {
         return id;
