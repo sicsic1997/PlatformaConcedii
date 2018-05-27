@@ -54,4 +54,7 @@ public final class UserService {
         return SUCCESS_REGISTER;
     }
 
+    /**/
+    public List<UserDTO> getAllUsers() { return UserDAO.getInstance().getAllEmployees(); }
+
 }

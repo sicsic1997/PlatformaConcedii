@@ -143,5 +143,36 @@ public final class UserDAO {
         return userDTOList;
     }
 
+    /**/
+    public List<UserDTO> getAllEmployees() {
+        List<UserDTO> userDTOList = null;
+        String sqlSelect = "" +
+                "SELECT " +
+                "   ID, " +
+                "   USER_NAME, " +
+                "   PASSWORD, " +
+                "   FIRST_NAME, " +
+                "   LAST_NAME, " +
+                "   MANAGER_ID, " +
+                "   USER_ROLE  " +
+                "FROM USERS";
+        try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                UserDTO userDTO = new UserDTO();
+                userDTO.setId(rs.getInt("ID"));
+                userDTO.setUserName(rs.getString("USER_NAME"));
+                userDTO.setPassword(rs.getString("PASSWORD"));
+                userDTO.setFirstName(rs.getString("FIRST_NAME"));
+                userDTO.setLastName(rs.getString("LAST_NAME"));
+                userDTO.setManagerId(rs.getInt("MANAGER_ID"));
+                userDTO.setUserRole(rs.getString("USER_ROLE"));
+                userDTOList.add(userDTO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userDTOList;
+    }
 
 }
