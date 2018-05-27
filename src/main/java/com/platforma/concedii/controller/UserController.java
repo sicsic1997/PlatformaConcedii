@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class UserController extends HttpServlet {
 
-    private final UserService userService = UserService.getInstance();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
