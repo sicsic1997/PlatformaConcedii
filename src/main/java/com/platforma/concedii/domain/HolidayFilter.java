@@ -1,5 +1,6 @@
 package com.platforma.concedii.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -7,8 +8,8 @@ public class HolidayFilter {
 
     private List<String> statusList;
     private List<Integer> userIdList;
-    private Date minDate;
-    private Date maxDate;
+    private LocalDate minDate;
+    private LocalDate maxDate;
     private boolean useDateRange;
 
     public boolean isUseDateRange() {
@@ -35,19 +36,19 @@ public class HolidayFilter {
         this.userIdList = userIdList;
     }
 
-    public Date getMinDate() {
+    public LocalDate getMinDate() {
         return minDate;
     }
 
-    public void setMinDate(Date minDate) {
+    public void setMinDate(LocalDate minDate) {
         this.minDate = minDate;
     }
 
-    public Date getMaxDate() {
+    public LocalDate getMaxDate() {
         return maxDate;
     }
 
-    public void setMaxDate(Date maxDate) {
+    public void setMaxDate(LocalDate maxDate) {
         this.maxDate = maxDate;
     }
 }
