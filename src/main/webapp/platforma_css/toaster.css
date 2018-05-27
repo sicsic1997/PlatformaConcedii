@@ -1,0 +1,23 @@
+.toaster {
+    display: inline-block;
+    position: fixed;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+}
+
+.toaster p {
+    margin-bottom: 0;
+    font-family: 'Molengo', sans-serif;
+}
+
+.toaster.success {
+    background-color: #28a745;
+}
+
+.toaster.error {
+    background-color: #d9534f;
+}

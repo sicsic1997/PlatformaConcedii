@@ -12,8 +12,8 @@ public final class UserService {
     public static UserService getInstance() {
         return userServiceInstance;
     }
-    private static final String USER_EXISTS_ERROR = "User already exists";
-    private static final String SUCCESS_REGISTER = "User registered with success";
+    public static final String USER_EXISTS_ERROR = "0User already exists";
+    public static final String SUCCESS_REGISTER = "1User registered with success";
 
     /**/
     public UserDTO getUserById(int userId) {

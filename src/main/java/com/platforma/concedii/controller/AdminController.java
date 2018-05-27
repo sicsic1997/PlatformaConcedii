@@ -21,6 +21,20 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userName = req.getParameter("userName");
+        String password = req.getParameter("password");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        UserRoles userRole = UserRoles.getRoleByString(req.getParameter("userRole"));
 
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserName(userName);
+        userDTO.setPassword(password);
+        userDTO.setFirstName(firstName);
+        userDTO.setLastName(lastName);
+        userDTO.setUserRole(userRole);
+
+        String message = UserService.getInstance().registerUser(userDTO);
+        resp.getWriter().write(message);
     }
 }

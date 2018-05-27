@@ -21,8 +21,9 @@ $(document).ready(function() {
            if(response == 0) {
                $('.wrong-credentials').show();
            } else {
-
+               window.location.replace("http://localhost:8080/platforma/" + response);
            }
+
         });
     }
 

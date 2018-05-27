@@ -2,15 +2,12 @@ package com.platforma.concedii.controller;
 
 import com.platforma.concedii.dto.UserDTO;
 import com.platforma.concedii.service.UserService;
-import com.platforma.concedii.util.UserRoles;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import static com.platforma.concedii.util.UserRoles.ADMIN;
 
 public class UserController extends HttpServlet {
 
@@ -31,17 +28,17 @@ public class UserController extends HttpServlet {
 
             switch (userDTO.getUserRole()) {
                 case ADMIN:
-                    getServletContext().getRequestDispatcher("/register.jsp").forward(req, resp);
+                    resp.getWriter().write("admin.jsp");
                     break;
-                case MAMANGER:
-                    resp.sendRedirect("/platforma/manager");
+                case MANAGER:
+                    resp.getWriter().write("managerRequest.jsp");
                     break;
                 case EMPLOYEE:
-                    getServletContext().getRequestDispatcher("/employeeRequest.jsp").forward(req, resp);
+                    resp.getWriter().write("employeeRequest.jsp");
                     break;
                 default:
                     req.setAttribute("errorMessage", "User has not enough rights.");
-                    getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+                    resp.getWriter().write("login.jsp");
             }
         } else {
             resp.getWriter().write("0");
