@@ -17,8 +17,44 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>default-war</id>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <directory>${project.basedir}/relnotes</directory>
+                                    <filtering>false</filtering>
+                                    <targetPath>relnotes</targetPath>
+                                    <includes>
+                                        <include>**/*.txt</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!--<url>http://localhost:8082/manager/text</url>-->
+                    <!--<server>local-tomcat</server>-->
+                    <!--<username>script</username>-->
+                    <!--<password>script</password>-->
+                    <!--<path>/DufryPP</path>-->
+                    <contextFile>src/main/webapp/META-INF/context.xml</contextFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
