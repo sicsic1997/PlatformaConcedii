@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public final class UserDAO {
@@ -111,7 +112,7 @@ public final class UserDAO {
 
     /**/
     public List<UserDTO> getAllManagers() {
-        List<UserDTO> userDTOList = null;
+        List<UserDTO> userDTOList = new ArrayList<>();
         String sqlSelect = "" +
                 "SELECT " +
                 "   ID, " +
@@ -122,8 +123,9 @@ public final class UserDAO {
                 "   MANAGER_ID, " +
                 "   USER_ROLE  " +
                 "FROM USERS " +
-                "WHERE ID = MANAGER_ID";
+                "WHERE USER_ROLE = ?";
         try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
+            ps.setString(1, "MANAGER");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 UserDTO userDTO = new UserDTO();
@@ -145,7 +147,7 @@ public final class UserDAO {
 
     /**/
     public List<UserDTO> getAllEmployees() {
-        List<UserDTO> userDTOList = null;
+        List<UserDTO> userDTOList = new ArrayList<>();
         String sqlSelect = "" +
                 "SELECT " +
                 "   ID, " +
