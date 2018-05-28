@@ -25,3 +25,4 @@ nbdist/
 
 #Web-app
 node_modules/
+src/main/webapp/reports/
