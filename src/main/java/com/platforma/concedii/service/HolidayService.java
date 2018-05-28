@@ -132,4 +132,9 @@ public class HolidayService {
 
     }
 
+    /**/
+    public void updateHolidayState(int id, String state) {
+        HolidayDAO.getInstance().updateHolidayStateById(id, state);
+    }
+
 }

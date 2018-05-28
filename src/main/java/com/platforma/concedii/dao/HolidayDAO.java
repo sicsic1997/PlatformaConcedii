@@ -167,4 +167,16 @@ public class HolidayDAO {
 
     }
 
+    /**/
+    public void updateHolidayStateById(int id, String status) {
+        String sqlInsert = "UPDATE HOLIDAYS SET STATUS = ? WHERE ID = ?";
+        try(PreparedStatement ps = dbConnection.prepareStatement(sqlInsert)) {
+            ps.setString(1, status);
+            ps.setInt(2, id);
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
