@@ -10,7 +10,25 @@ public final class HolidayDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private int userId;
+    private String firstName;
+    private String lastName;
     private HolidayStates status;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public int getId() {
         return id;

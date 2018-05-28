@@ -110,9 +110,14 @@ public class HolidayDAO {
                 "   START_DATE, " +
                 "   END_DATE, " +
                 "   USER_ID, " +
-                "   STATUS " +
-                "FROM HOLIDAYS ";
-        try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
+                "   STATUS," +
+                "   FIRST_NAME, " +
+                "   LAST_NAME " +
+                "FROM HOLIDAYS " +
+                "INNER JOIN USERS " +
+                "   ON USERS.ID = HOLIDAYS.USER_ID " +
+                "ORDER BY FIRST_NAME, LAST_NAME";
+            try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 HolidayDTO holidayDTO = new HolidayDTO();
@@ -120,6 +125,8 @@ public class HolidayDAO {
                 holidayDTO.setStartDate(LocalDate.parse(rs.getString("START_DATE")));
                 holidayDTO.setEndDate(LocalDate.parse(rs.getString("END_DATE")));
                 holidayDTO.setUserId(rs.getInt("USER_ID"));
+                holidayDTO.setFirstName(rs.getString("FIRST_NAME"));
+                holidayDTO.setLastName(rs.getString("LAST_NAME"));
                 holidayDTO.setStatus(HolidayStates.getRoleByString(rs.getString("STATUS")));
                 holidayDTOList.add(holidayDTO);
             }
