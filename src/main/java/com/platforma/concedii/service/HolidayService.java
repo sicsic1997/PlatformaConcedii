@@ -87,7 +87,7 @@ public class HolidayService {
         if(holidayFilter.getStatusList() != null && !holidayFilter.getStatusList().isEmpty()) {
             holidayDTOList = holidayDTOList
                     .stream()
-                    .filter(p -> holidayFilter.getStatusList().contains(p.getStatus()))
+                    .filter(p -> holidayFilter.getStatusList().contains(p.getStatus().toString()))
                     .collect(Collectors.toList());
         }
 
@@ -104,23 +104,23 @@ public class HolidayService {
     };
 
     /**/
-    public String generateReport() {
+    public String generateReport(HolidayFilter holidayFilter) {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_mm_yyyy_HH_mm_ss");
         LocalDateTime now = LocalDateTime.now();
-
-        String fileName = "src/main/resources/reports/Holiday_Report_" + dtf.format(now);
-        List<ReportLine> reportLineList = HolidayDAO.getInstance().getAllReportLines();
+        String path = "src/main/webapp/reports/";
+        String fileName = "Holiday_Report_" + dtf.format(now) + ".txt";
+        List<HolidayDTO> reportLineList = getAllHolidaysByFilter(holidayFilter);
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        try(BufferedWriter bf = new BufferedWriter(new FileWriter(fileName))) {
-            for (ReportLine line:reportLineList) {
+        try(BufferedWriter bf = new BufferedWriter(new FileWriter(path + fileName))) {
+            for (HolidayDTO holidayDTO:reportLineList) {
                 String row =
-                        line.getFirstName() + " " +
-                        line.getLastName() + ": " +
-                        df.format(line.getStartDate()) + " to " +
-                        df.format(line.getEndDate()) + " with status " +
-                        line.getStatus() + ".\n";
+                        holidayDTO.getFirstName() + " " +
+                        holidayDTO.getLastName() + ": " +
+                        df.format(holidayDTO.getStartDate()) + " to " +
+                        df.format(holidayDTO.getEndDate()) + " with status " +
+                        holidayDTO.getStatus() + ".\n";
                 bf.write(row);
             }
             bf.close();

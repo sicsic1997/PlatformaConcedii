@@ -25,10 +25,10 @@
     <div class="container mx-3">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item pr-3">
-                <a class="nav-link active" href="employee">MAKE REQUEST</a>
+                <a class="nav-link active" href="holidayRequest">MAKE REQUEST</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="employee/dashboard">DASHBOARD</a>
+                <a class="nav-link" href="dashboard">DASHBOARD</a>
             </li>
         </ul>
     </div>
@@ -61,7 +61,7 @@
     </div>
     <div class="row">
         <div class="text-center col-md-8">
-            <button type="submit" id="request-holiday" class="btn btn-success mt-4">Submit</button>
+            <button type="submit" id="request-holiday" class="btn btn-success mt-4 px-4">SUBMIT</button>
         </div>
     </div>
 </div>
@@ -74,7 +74,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="platforma_scripts/moment.min.js"></script>
 <script src="platforma_scripts/daterangepicker.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="platforma_scripts/employeeRequest_script.js"></script>
 
 </body>

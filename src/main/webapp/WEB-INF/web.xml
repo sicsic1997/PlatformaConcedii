@@ -51,4 +51,24 @@
         <url-pattern>/holidayRequest</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DashboardController</servlet-name>
+        <servlet-class>com.platforma.concedii.controller.DashboardController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DashboardController</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReportController</servlet-name>
+        <servlet-class>com.platforma.concedii.controller.ReportController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReportController</servlet-name>
+        <url-pattern>/report</url-pattern>
+    </servlet-mapping>
+
 </web-app>

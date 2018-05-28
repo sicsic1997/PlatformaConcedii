@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.platforma.concedii.dao.UserDAO;
 import com.platforma.concedii.domain.HolidayFilter;
 import com.platforma.concedii.dto.HolidayDTO;
+import com.platforma.concedii.dto.UserDTO;
 import com.platforma.concedii.service.HolidayService;
 
 import javax.servlet.ServletException;
@@ -17,10 +18,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportController extends HttpServlet {
+public class DashboardController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/dashboard.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = req.getParameter("userName");
         String status = req.getParameter("status");
         String useDateRange = req.getParameter("useDateRange");
@@ -52,14 +58,10 @@ public class ReportController extends HttpServlet {
         holidayFilter.setMaxDate(endDate);
         holidayFilter.setUseDateRange(Boolean.parseBoolean(useDateRange));
 
-        String fileLoc = HolidayService.getInstance().generateReport(holidayFilter);
-        resp.getWriter().write(fileLoc);
-    }
+        List<HolidayDTO> holidayDTOList = HolidayService.getInstance().getAllHolidaysByFilter(holidayFilter);
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(holidayDTOList);
+        resp.getWriter().write(json);
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("holidayId"));
-        String state = req.getParameter("newState");
-        HolidayService.getInstance().updateHolidayState(id, state);
     }
 }
