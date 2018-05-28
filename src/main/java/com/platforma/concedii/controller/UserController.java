@@ -28,13 +28,13 @@ public class UserController extends HttpServlet {
 
             switch (userDTO.getUserRole()) {
                 case ADMIN:
-                    resp.getWriter().write("admin.jsp");
+                    resp.getWriter().write("ADMIN");
                     break;
                 case MANAGER:
-                    resp.getWriter().write("managerRequest.jsp");
+                    resp.getWriter().write("MANAGER");
                     break;
                 case EMPLOYEE:
-                    resp.getWriter().write("employeeRequest.jsp");
+                    resp.getWriter().write("EMPLOYEE");
                     break;
                 default:
                     req.setAttribute("errorMessage", "User has not enough rights.");

@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    if($.cookie('userRole') !== 'ADMIN') {
+        window.location.replace("http://localhost:8080/platforma/login");
+    }
+
     var registerForm = document.getElementById('register-form');
 
     $('.wrong-credentials').hide();

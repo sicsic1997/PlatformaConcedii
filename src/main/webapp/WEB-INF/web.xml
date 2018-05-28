@@ -41,4 +41,14 @@
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>EmployeeController</servlet-name>
+        <servlet-class>com.platforma.concedii.controller.EmployeeController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EmployeeController</servlet-name>
+        <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+
 </web-app>

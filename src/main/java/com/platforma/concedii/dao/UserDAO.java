@@ -158,7 +158,9 @@ public final class UserDAO {
                 "   LAST_NAME, " +
                 "   MANAGER_ID, " +
                 "   USER_ROLE  " +
-                "FROM USERS";
+                "FROM USERS " +
+                "WHERE USER_ROLE <> 'ADMIN' " +
+                "ORDER BY FIRST_NAME, LAST_NAME";
         try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
