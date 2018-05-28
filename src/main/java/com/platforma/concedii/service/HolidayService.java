@@ -2,9 +2,14 @@ package com.platforma.concedii.service;
 
 import com.platforma.concedii.dao.HolidayDAO;
 import com.platforma.concedii.domain.HolidayFilter;
+import com.platforma.concedii.domain.ReportLine;
 import com.platforma.concedii.dto.HolidayDTO;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,5 +102,34 @@ public class HolidayService {
         return holidayDTOList;
 
     };
+
+    /**/
+    public String generateReport() {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_mm_yyyy_HH_mm_ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        String fileName = "src/main/resources/reports/Holiday_Report_" + dtf.format(now);
+        List<ReportLine> reportLineList = HolidayDAO.getInstance().getAllReportLines();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        try(BufferedWriter bf = new BufferedWriter(new FileWriter(fileName))) {
+            for (ReportLine line:reportLineList) {
+                String row =
+                        line.getFirstName() + " " +
+                        line.getLastName() + ": " +
+                        df.format(line.getStartDate()) + " to " +
+                        df.format(line.getEndDate()) + " with status " +
+                        line.getStatus() + ".\n";
+                bf.write(row);
+            }
+            bf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return  fileName;
+
+    }
 
 }

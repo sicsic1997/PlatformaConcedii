@@ -1,7 +1,9 @@
 package com.platforma.concedii.dao;
 
+import com.platforma.concedii.domain.ReportLine;
 import com.platforma.concedii.dto.HolidayDTO;
 import com.platforma.concedii.util.DbUtil;
+import com.platforma.concedii.util.HolidayStates;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -126,6 +128,41 @@ public class HolidayDAO {
         }
 
         return holidayDTOList;
+
+
+    }
+
+    /**/
+    public List<ReportLine> getAllReportLines() {
+
+        List<ReportLine> reportLineList = new ArrayList<>();
+        String sqlSelect = "" +
+                "SELECT " +
+                "   FIRST_NAME, " +
+                "   LAST_NAME, " +
+                "   START_DATE, " +
+                "   END_DATE, " +
+                "   STATUS " +
+                "FROM HOLIDAYS " +
+                "INNER JOIN USERS " +
+                "   ON USERS.ID = HOLIDAYS.USER_ID " +
+                "ORDER BY FIRST_NAME, LAST_NAME";
+        try(PreparedStatement ps = dbConnection.prepareStatement(sqlSelect)) {
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                ReportLine reportLine = new ReportLine();
+                reportLine.setFirstName(rs.getString("FIRST_NAME"));
+                reportLine.setLastName(rs.getString("LAST_NAME"));
+                reportLine.setStartDate(LocalDate.parse(rs.getString("START_DATE")));
+                reportLine.setEndDate(LocalDate.parse(rs.getString("END_DATE")));
+                reportLine.setStatus(HolidayStates.getRoleByString(rs.getString("STATUS")));
+                reportLineList.add(reportLine);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reportLineList;
 
 
     }
