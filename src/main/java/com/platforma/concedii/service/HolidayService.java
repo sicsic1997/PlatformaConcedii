@@ -19,8 +19,8 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class HolidayService {
 
-    private static final String SAVE_HOLIDAY_SUCCESS = "Holiday request registered with success";
-    private static final String SAVE_HOLIDAY_OVERLAPS = "The request overlaps with employee requests from: ";
+    private static final String SAVE_HOLIDAY_SUCCESS = "1Holiday request registered with success";
+    private static final String SAVE_HOLIDAY_OVERLAPS = "0The request overlaps with employee requests from: ";
     private static final HolidayService holidayServiceInstance = new HolidayService();
     private HolidayService(){};
     public static HolidayService getInstance() {

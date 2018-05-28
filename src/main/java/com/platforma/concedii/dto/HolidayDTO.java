@@ -1,5 +1,7 @@
 package com.platforma.concedii.dto;
 
+import com.platforma.concedii.util.HolidayStates;
+
 import java.time.LocalDate;
 
 public final class HolidayDTO {
@@ -8,7 +10,7 @@ public final class HolidayDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private int userId;
-    private String status;
+    private HolidayStates status;
 
     public int getId() {
         return id;
@@ -42,11 +44,11 @@ public final class HolidayDTO {
         this.userId = userId;
     }
 
-    public String getStatus() {
+    public HolidayStates getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(HolidayStates status) {
         this.status = status;
     }
 }

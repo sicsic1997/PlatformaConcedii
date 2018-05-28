@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="platforma_css/daterangepicker.css">
+    <link rel="stylesheet" href="platforma_css/toaster.css">
     <link rel="stylesheet" href="platforma_css/employee.css">
     <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
 
@@ -46,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3 emp-select">
         <div class="form-group col-md-8 text-left">
             <label>Select employee</label>
             <select id="user-select" class="custom-select">
@@ -55,14 +56,18 @@
     </div>
     <div class="row">
         <div class="col-md-8 wrong-credentials">
-            <p class="text-right">Username or password incorrect</p>
+            <p class="text-right"></p>
         </div>
     </div>
     <div class="row">
         <div class="text-center col-md-8">
-            <button type="submit" id="login-btn" class="btn btn-success mt-4">Submit</button>
+            <button type="submit" id="request-holiday" class="btn btn-success mt-4">Submit</button>
         </div>
     </div>
+</div>
+
+<div class="toaster">
+    <p></p>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

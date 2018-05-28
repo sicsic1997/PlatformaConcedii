@@ -34,6 +34,7 @@ html, body {
 
 .wrong-credentials {
     justify-content: flex-end;
+    display: none;
 }
 
 .wrong-credentials p {
@@ -41,4 +42,8 @@ html, body {
     margin-top: .25rem;
     font-size: 80%;
     color: #dc3545;
+}
+
+.emp-select {
+    display: none;
 }

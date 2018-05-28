@@ -22,6 +22,7 @@ html, body {
 
 .wrong-credentials {
     justify-content: flex-end;
+    display: none;
 }
 
 .wrong-credentials p {

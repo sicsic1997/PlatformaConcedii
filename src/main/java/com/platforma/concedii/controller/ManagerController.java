@@ -16,7 +16,7 @@ public class ManagerController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/managerRequest.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/employeeRequest.jsp").forward(req, resp);
     }
 
     @Override

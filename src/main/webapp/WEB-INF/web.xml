@@ -48,7 +48,7 @@
 
     <servlet-mapping>
         <servlet-name>EmployeeController</servlet-name>
-        <url-pattern>/employee</url-pattern>
+        <url-pattern>/holidayRequest</url-pattern>
     </servlet-mapping>
 
 </web-app>

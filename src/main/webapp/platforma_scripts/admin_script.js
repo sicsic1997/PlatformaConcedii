@@ -8,6 +8,7 @@ $(document).ready(function() {
 
     $('.wrong-credentials').hide();
     $('.toaster').hide();
+    $('.registerUserRole').val($('.registerUserRole option:first').val());
 
     $("#register-btn").click(function(event) {
         if (registerForm.checkValidity() === true) {
@@ -32,7 +33,6 @@ $(document).ready(function() {
             lastName: $("#registerLastName").val(),
             userRole: $("#registerUserRole").find(":selected").text()
         };
-
         $('.toaster').hide();
 
         $.post("/platforma/admin", data, function(response) {

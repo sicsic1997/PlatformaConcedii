@@ -26,10 +26,10 @@ $(document).ready(function() {
                     location = 'admin';
                     break;
                 case "MANAGER":
-                    location = 'managerRequest';
+                    location = 'holidayRequest';
                     break;
                 case "EMPLOYEE":
-                    location = 'employee';
+                    location = 'holidayRequest';
                     break;
                 default:
                     $('.wrong-credentials').show();

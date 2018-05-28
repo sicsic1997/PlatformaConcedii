@@ -26,7 +26,7 @@ public class HolidayDAO {
             ps.setDate(1, Date.valueOf(holidayDTO.getStartDate()));
             ps.setDate(2, Date.valueOf(holidayDTO.getEndDate()));
             ps.setInt(3, holidayDTO.getUserId());
-            ps.setString(4, holidayDTO.getStatus());
+            ps.setString(4, String.valueOf(holidayDTO.getStatus()));
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class HolidayDAO {
                 holidayDTO.setStartDate(LocalDate.parse(rs.getString("START_DATE")));
                 holidayDTO.setEndDate(LocalDate.parse(rs.getString("END_DATE")));
                 holidayDTO.setUserId(rs.getInt("USER_ID"));
-                holidayDTO.setStatus(rs.getString("STATUS"));
+                holidayDTO.setStatus(HolidayStates.getRoleByString(rs.getString("STATUS")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,7 +88,7 @@ public class HolidayDAO {
                 holidayDTO.setStartDate(LocalDate.parse(rs.getString("START_DATE")));
                 holidayDTO.setEndDate(LocalDate.parse(rs.getString("END_DATE")));
                 holidayDTO.setUserId(rs.getInt("USER_ID"));
-                holidayDTO.setStatus(rs.getString("STATUS"));
+                holidayDTO.setStatus(HolidayStates.getRoleByString(rs.getString("STATUS")));
                 holidayDTOList.add(holidayDTO);
             }
         } catch (SQLException e) {
@@ -120,7 +120,7 @@ public class HolidayDAO {
                 holidayDTO.setStartDate(LocalDate.parse(rs.getString("START_DATE")));
                 holidayDTO.setEndDate(LocalDate.parse(rs.getString("END_DATE")));
                 holidayDTO.setUserId(rs.getInt("USER_ID"));
-                holidayDTO.setStatus(rs.getString("STATUS"));
+                holidayDTO.setStatus(HolidayStates.getRoleByString(rs.getString("STATUS")));
                 holidayDTOList.add(holidayDTO);
             }
         } catch (SQLException e) {
