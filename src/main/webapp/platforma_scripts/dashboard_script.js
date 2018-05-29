@@ -4,7 +4,10 @@ $(document).ready(function() {
         userSelect = $('#userSelect'),
         statusSelect = $('#statusSelect'),
         users = [],
-        filteredUsers = [];
+        filteredUsers = [],
+        today = new Date(),
+        minDate = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()),
+        maxDate = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
 
     $('.toaster').hide();
 
@@ -17,7 +20,10 @@ $(document).ready(function() {
     });
 
     $('#daterange').daterangepicker({
-        autoApply:true
+        autoApply:true,
+        showDropdowns: true,
+        minDate: minDate,
+        maxDate: maxDate
     });
 
     $('.go-back').click(function() {

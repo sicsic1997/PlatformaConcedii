@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    var users = [];
-    var userSelect = $('#user-select');
+    var users = [],
+        userSelect = $('#user-select'),
+        minDate = new Date(),
+        maxDate = new Date(minDate.getFullYear() + 1, minDate.getMonth(), minDate.getDate());
 
     if($.cookie('userRole') !== 'EMPLOYEE' && $.cookie('userRole') !== 'MANAGER') {
         window.location.replace("http://localhost:8080/platforma/login");
@@ -10,7 +12,7 @@ $(document).ready(function() {
     $('.toaster').hide();
     $('.emp-select').hide();
 
-    if($.cookie('userRole') === 'MANAGER') {
+    if($.cookie('userRole') === 'MANAGER' || $.cookie('userRole') === 'EMPLOYEE') {
         getAllUsers();
         $('.emp-select').val($('.emp-select option:first').val());
         $('.emp-select').show();
@@ -18,8 +20,12 @@ $(document).ready(function() {
     }
 
     $('#daterange').daterangepicker({
-        autoApply:true
+        autoApply:true,
+        showDropdowns: true,
+        minDate: minDate,
+        maxDate: maxDate
     });
+
 
     $('#request-holiday').click(function() {
         takeHoliday();
