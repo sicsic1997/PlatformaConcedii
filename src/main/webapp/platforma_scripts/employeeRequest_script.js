@@ -12,7 +12,7 @@ $(document).ready(function() {
     $('.toaster').hide();
     $('.emp-select').hide();
 
-    if($.cookie('userRole') === 'MANAGER' || $.cookie('userRole') === 'EMPLOYEE') {
+    if($.cookie('userRole') === 'MANAGER') {
         getAllUsers();
         $('.emp-select').val($('.emp-select option:first').val());
         $('.emp-select').show();

@@ -111,7 +111,7 @@ $(document).ready(function() {
             row.append('<td>' + startDate + '</td>');
             row.append('<td>' + endDate + '</td>');
             row.append('<td>' + filteredUsers[i].status + '</td>');
-            if(filteredUsers[i].status === 'PENDING') {
+            if(filteredUsers[i].status === 'PENDING' && userRole === 'MANAGER') {
                 row.append("<td><i class='material-icons mr-1 approve'>" + "done" + "</i><i class='ml-1 material-icons reject'>" + "close" + "</i></td>");
             } else {
                 row.append("<td></td>");
